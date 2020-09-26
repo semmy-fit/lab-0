@@ -8,9 +8,9 @@
 #include <time.h>
 int main(int argc,char const *argv[])
 {
-if(args<2)
+if(argc<2)
    {
-       printf ("You forgot to argument 2\n");
+       printf ("You forgot  argument 2\n");
    } 
     else 
       {   
@@ -23,15 +23,23 @@ if(args<2)
      {
         printf("Child process, ppid=%d, pid=%d\n",getppid(), getpid());
         execvp(argv[1],&argv[1]);} /*замена исоплняемого кода для дочернего процесса*/
-        wait(&child_status); /*ожидание заврешения дочернего процесса*/
         exit(1);
-
+    }
+   if(p>0)
+   {wait(&child_status); /*ожидание заврешения дочернего процесса*/
+     
+   }
     if (WIFEXITED(child_status))
          {
             printf("The child process exited , with exit code %d ", WEXITSTATUS(child_status)); /*вывод кода заврешения дочернего процесса*/
             printf("\n"); 
           }
-     }
+     
+         if(p<0)
+           {
+           printf("Errol");
+            exit(2);
+          }
   /* else 
 
 if(p==0) {
