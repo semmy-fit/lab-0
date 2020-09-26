@@ -6,35 +6,32 @@
 #include<string.h>
 #include <sys/wait.h>
 #include <time.h>
-void main(int args,char* argv[])
+int main(int argc,char const *argv[])
 {
-if(args!=3)
-{
-printf ("You forgot to argument 2\n");
-
-} else if(args=3)
-{
-    int child_status;
-    pid_t p;  /*создание родительского процесса*/
-  
-    printf("Parent process, pid=%d\n", getpid());
-   p=fork(); /*порождаем новый процесс(дочерний)*/
+if(args<2)
+   {
+       printf ("You forgot to argument 2\n");
+   } 
+    else 
+      {   
+          int child_status;
+          pid_t p;  /*создание родительского процесса*/
+          printf("Parent process, pid=%d\n", getpid());
+          p=fork(); /*порождаем новый процесс(дочерний)*/
    
-   if(p==0) {
-     printf("Child process, pid=%d, ppid=%d\n",getppid(), getpid());
- char *argt[]={"./test",NULL};
-        execvp(argt[0],argv);} /*замена исоплняемого кода для дочернего процесса*/
+   if(p==0) 
+     {
+        printf("Child process, ppid=%d, pid=%d\n",getppid(), getpid());
+        execvp(argv[1],&argv[1]);} /*замена исоплняемого кода для дочернего процесса*/
+        wait(&child_status); /*ожидание заврешения дочернего процесса*/
+        exit(1)
 
-  wait(&child_status); /*ожидание заврешения дочернего процесса*/
-
-    if (WIFEXITED(child_status)) {
-
- printf("The child process exited , with exit code %d ", WEXITSTATUS(child_status)); /*вывод кода заврешения дочернего процесса*/
- 
-   printf("\n");
-   printf("Parent process exited , with exit code  %d", WEXITSTATUS(p));/*вывод кода заврешения родительского процесса*/
-}
-}
+    if (WIFEXITED(child_status))
+         {
+            printf("The child process exited , with exit code %d ", WEXITSTATUS(child_status)); /*вывод кода заврешения дочернего процесса*/
+            printf("\n"); 
+          }
+     }
   /* else 
 
 if(p==0) {
