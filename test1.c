@@ -28,7 +28,7 @@ if(argc<2)
    if(p>0)
    {wait(&child_status); /*ожидание заврешения дочернего процесса*/
      
-   }
+   
     if (WIFEXITED(child_status))
          {
             printf("The child process exited , with exit code %d ", WEXITSTATUS(child_status)); /*вывод кода заврешения дочернего процесса*/
