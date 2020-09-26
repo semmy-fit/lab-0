@@ -24,7 +24,7 @@ if(args<2)
         printf("Child process, ppid=%d, pid=%d\n",getppid(), getpid());
         execvp(argv[1],&argv[1]);} /*замена исоплняемого кода для дочернего процесса*/
         wait(&child_status); /*ожидание заврешения дочернего процесса*/
-        exit(1)
+        exit(1);
 
     if (WIFEXITED(child_status))
          {
