@@ -13,6 +13,7 @@ int main(int argc,char const *argv[])
    int LNumber;
    int poz;
    arrSymbol[0] = -1;
+	int linelen;
 
    if((fd=open("text1.txt", O_RDONLY))== -1)
           {
@@ -47,6 +48,7 @@ int main(int argc,char const *argv[])
                {
                 
                    poz=lseek(fd,arrSymbol[LNumber - 1] +1, SEEK_SET);
+		       lineLen= arrSymbol[LNumber]-arrSymbol[LNumber -1 ];
                }  
                  memset(buf,Null,1000);
                  cBite=read(fd, buf,1000);
