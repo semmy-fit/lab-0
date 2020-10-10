@@ -28,7 +28,8 @@ int main(int argc,char const *argv[])
        if(buf[z] == '\n')
          
             {
-               arrSymbol[pozSymbol++] = z;
+               arrSymbol[pozSymbol] = z;
+	       pozSymbol++;
             }
           z++;
 
@@ -51,9 +52,9 @@ int main(int argc,char const *argv[])
 		       lineLen= arrSymbol[LNumber]-arrSymbol[LNumber -1 ];
                }  
                  memset(buf,Null,1000);
-                 cBite=read(fd, buf,1000);
+                 cBite=read(fd, buf,linelen);
                  i=0;
-                  while(buf[i] != '\n')
+                  for(i=0;i>lineLen;i++)
                      { 
                          printf("%c", buf[i]);
                          i++;
