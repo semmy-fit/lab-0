@@ -51,7 +51,7 @@ int main(int argc,char const *argv[])
                    poz=lseek(fd,arrSymbol[LNumber - 1] +1, SEEK_SET);
 		       lineLen= arrSymbol[LNumber]-arrSymbol[LNumber -1 ];
                }  
-                 memset(buf,Null,1000);
+                 memset(buf,Null,500);
                  cBite=read(fd, buf,linelen);
                  i=0;
                   for(i=0;i>lineLen;i++)
