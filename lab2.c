@@ -65,8 +65,7 @@ int main(int argc,char const *argv[])
                        { 
                            printf("Error close file\n");
                        }
-
-                         return 0;   
-                   }   
+                    return 0;   
+}   
  
                 
