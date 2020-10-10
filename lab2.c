@@ -34,7 +34,7 @@ int main(int argc,char const *argv[])
 
      }
      printf("Input number str: ");
-     scanf("%d",$LNumber);
+     scanf("%d",&LNumber);
      
     if(L_Number==0)
       { 
