@@ -58,7 +58,7 @@ int main(int argc,char const *argv[])
                       }
                    printf("\n");
                   
-                    if(closes(fd))
+                    if(close(fd))
                        { 
                            printf("Error close file\n");
                         
