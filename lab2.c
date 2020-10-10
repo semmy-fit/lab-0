@@ -14,6 +14,7 @@ int main(int argc,char const *argv[])
    int poz;
    arrSymbol[0] = -1;
    int linelen;
+	//linelen=0;
 
    if((fd=open("text1.txt", O_RDONLY))== -1)
           {
