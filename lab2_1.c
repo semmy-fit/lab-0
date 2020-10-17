@@ -16,14 +16,29 @@ int main(int argc,char const *argv[])
    arrSymbol[0] = -1;
    int linelen;
 	//linelen=0;
-
+   struct stat statbuf;
+	void Mem_file;
+	
    if((fd=open("text1.txt", O_RDONLY))== -1)
           {
  		printf("File not open\n");
 		exit(-1);
           }
+	
+    if(fstat(fd,&statbuf) <0)
+       {
+	printf("Ошибка fstat");
+        }
+	
+	Mem_file=mmap(0,statbuf.st_size,PROT_READ,MAP_SHARED,fd,0);
+	if(Mem_file==MAP_FAILED)
+	{
+	  close(fd);
+	pritff("Fail display");	
+	}
+	
 
-   cBite=read(fd, buf, 500);
+/*   cBite=read(fd, buf, 500);
    int z=0;
    while(z<cBite)
     {
@@ -74,7 +89,9 @@ int main(int argc,char const *argv[])
     {
   //   err_sys("ошибка вызова функции mmap для выходного файла");
   //memcpy(fp, src, statbuf.st_size); /* сделать копию файла */
-  //exit(0);   
+  //exit(0);  
+	    */
+	    
     }
     
 }   
