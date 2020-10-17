@@ -17,7 +17,7 @@ int main(int argc,char const *argv[])
    int linelen;
 	//linelen=0;
    struct stat *statbuf;
-	void Mem_file;
+	void *Mem_file;
 	
    if((fd=open("text1.txt", O_RDONLY))== -1)
           {
