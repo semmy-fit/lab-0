@@ -70,7 +70,7 @@ int main(int argc,char const *argv[])
                        poz=lseek(fd,arrSymbol[LNumber - 1] +1, SEEK_SET);
 		       linelen= arrSymb[LNumber]-arrSym[LNumber -1 ];
                      }  
-                    memset(buf,NULL,500);
+                    memset(buf,0,500);
                     cBite=read(fd, buf,linelen);
                     i=0;
                          for(int i=0; i>linelen; i++)
