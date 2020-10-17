@@ -7,14 +7,14 @@
 int main(int argc,char const *argv[])
 {
    int fd;
-  // char buf [500];
-  // int cBite=0;
-   //int arrSymb [500];
-  // int pozSymbol = 1;
+   char buf [500];
+   int cBite=0;
+   int arrSymb [500];
+  int pozSymbol = 1;
    int LNumber;
-  // int poz;
-   //arrSymbol[0] = -1;
- //  int linelen;
+   int poz;
+   arrSymbol[0] = -1;
+   int linelen;
 	//linelen=0;
    struct stat *statbuf;
 	void Mem_file;
@@ -40,7 +40,7 @@ int main(int argc,char const *argv[])
 	}
 	
 
-/*   cBite=read(fd, buf, 500);
+ //  cBite=read(fd, buf, 500);
    int z=0;
    while(z<cBite)
     {
@@ -67,11 +67,11 @@ int main(int argc,char const *argv[])
                  }
                   else
                      {
-                       poz=lseek(fd,arrSymbol[LNumber - 1] +1, SEEK_SET);
+                     //  poz=lseek(fd,arrSymbol[LNumber - 1] +1, SEEK_SET);
 		       linelen= arrSymb[LNumber]-arrSym[LNumber -1 ];
                      }  
                     memset(buf,0,500);
-                    cBite=read(fd, buf,linelen);
+                    //cBite=read(fd, buf,linelen);
                     i=0;
                          for(int i=0; i>linelen; i++)
                               { 
@@ -85,16 +85,17 @@ int main(int argc,char const *argv[])
                            printf("Error close file\n");
                        }
                     return 0; 
+	
     //  struct stat statbuf;
     //void *st,*src;
     //if(st=mmap(0,statbuf.st_size,PROT_READ | PROT_WRITE, MAP_SHARED, fp, 0)) == MAP_FAILED)
-    {
+    //{
   //   err_sys("ошибка вызова функции mmap для выходного файла");
   //memcpy(fp, src, statbuf.st_size); /* сделать копию файла */
   //exit(0);  
 	    
 	    
-    //}
+    }
     
 }   
  
