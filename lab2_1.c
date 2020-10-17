@@ -16,7 +16,7 @@ int main(int argc,char const *argv[])
    //arrSymbol[0] = -1;
  //  int linelen;
 	//linelen=0;
-   struct stat statbuf;
+   struct stat *statbuf;
 	void Mem_file;
 	
    if((fd=open("text1.txt", O_RDONLY))== -1)
