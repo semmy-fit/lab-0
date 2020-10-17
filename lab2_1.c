@@ -19,7 +19,7 @@ int main(int argc,char const *argv[])
    struct stat *statbuf;
 	void *Mem_file;
 	
-   if((fd=open("text1.txt", O_RDONLY))== -1)
+   if((fd=open("text.txt", O_RDONLY))== -1)
           {
  		printf("File not open\n");
 		exit(-1);
