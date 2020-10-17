@@ -7,14 +7,14 @@
 int main(int argc,char const *argv[])
 {
    int fd;
-   char buf [500];
-   int cBite=0;
-   int arrSymb [500];
-   int pozSymbol = 1;
+  // char buf [500];
+  // int cBite=0;
+   //int arrSymb [500];
+  // int pozSymbol = 1;
    int LNumber;
-   int poz;
-   arrSymbol[0] = -1;
-   int linelen;
+  // int poz;
+   //arrSymbol[0] = -1;
+ //  int linelen;
 	//linelen=0;
    struct stat statbuf;
 	void Mem_file;
@@ -26,10 +26,12 @@ int main(int argc,char const *argv[])
           }
 	
     if(fstat(fd,&statbuf) <0)
-       {
-	printf("Ошибка fstat");
-        }
+         {
+	   printf("Ошибка fstat");
+         }
 	
+	
+	//отображение в память
 	Mem_file=mmap(0,statbuf.st_size,PROT_READ,MAP_SHARED,fd,0);
 	if(Mem_file==MAP_FAILED)
 	{
@@ -90,9 +92,9 @@ int main(int argc,char const *argv[])
   //   err_sys("ошибка вызова функции mmap для выходного файла");
   //memcpy(fp, src, statbuf.st_size); /* сделать копию файла */
   //exit(0);  
-	    */
 	    
-    }
+	    
+    //}
     
 }   
  
