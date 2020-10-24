@@ -36,7 +36,7 @@ int main(int argc,char const *argv[])
     struct stat statbuf; 
 	
     cBite=stat(fd, &statbuf);
-    if ( cByte < 0 )
+    if ( cBite < 0 )
     {
         printf("fstat error"); 
     }
