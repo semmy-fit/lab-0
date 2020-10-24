@@ -25,12 +25,6 @@ int main(int argc,char const *argv[])
 		exit(-1);
           }
 	
-    if(fstat(fd,&statbuf) <0)
-         {
-	   printf("Ошибка fstat");
-         }
-	
-	
 	//отображение в память
 	Mem_file=mmap(0,statbuf.st_size,PROT_READ,MAP_SHARED,fd,0);
 	if(Mem_file==MAP_FAILED)
