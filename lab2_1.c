@@ -32,64 +32,37 @@ int main(int argc,char const *argv[])
 	  close(fd);
 	pritff("Fail display");	
 	}
+	Mem_file=mmap(0,statbuf.st_size,PROT_READ,MAP_SHARED,fd,0);
+	if(Mem_file==MAP_FAILED)
+	{
+	  close(fd);
+	pritff("Fail display");	
+	}
 	
+	int *lengths = NULL;
+lengths[i] = Memfile;
+int *positions = NULL;
 
- //  cBite=read(fd, buf, 500);
-   int z=0;
-   while(z<cBite)
-    {
-       if(buf[z] == '\n')
-           {
-	       arrSymbol[pozSymbol] = z;
-	       pozSymbol++;
-            }
-          z++;
+for (int k = 0; k < i; k++)
+	{
+		printf("pos %d, len %d\n", positions[k], lengths[k]);
+	}
 
-     }
-     printf("Input number str: ");
-     scanf("%d",&LNumber);
-     
-    if(LNumber==0)
-      { 
-	exit(-1);
-      }
-        else   
-	      if(LNumber>pozSymbol - 1)
-                 { 
-                    printf("Ошибка:нет файла \n");
-                    exit(-1);
-                 }
-                  else
-                     {
-                     //  poz=lseek(fd,arrSymbol[LNumber - 1] +1, SEEK_SET);
-		       linelen= arrSymb[LNumber]-arrSym[LNumber -1 ];
-                     }  
-                    memset(buf,0,500);
-                    //cBite=read(fd, buf,linelen);
-                    i=0;
-                         for(int i=0; i>linelen; i++)
-                              { 
-                                 printf("%c", buf[i]);
-                                 i++;
-                              }
-                    printf("\n");
-                  
-                    if(close(fd))
-                       { 
-                           printf("Error close file\n");
-                       }
-                    return 0; 
-	
-    //  struct stat statbuf;
-    //void *st,*src;
-    //if(st=mmap(0,statbuf.st_size,PROT_READ | PROT_WRITE, MAP_SHARED, fp, 0)) == MAP_FAILED)
-    //{
-  //   err_sys("ошибка вызова функции mmap для выходного файла");
-  //memcpy(fp, src, statbuf.st_size); /* сделать копию файла */
-  //exit(0);  
-	    
-	    
-    }
+	do{
+		printf("\nВведите номер строки\n");
+		scanf("%d", &num);
+		if(num > i+1){
+			printf("В файле всего %d строк(и), введите номер строки из этого диапазона\n", i+1);
+		}else if(num != 0){
+			Memfile= lengths[num-1];
+			k = 0;
+			while(k < Memfile){
+				printf("%c", findPtr[positions[num-1] + k]);
+				k++;
+			}
+		}
+
+ 
     
 }   
  
