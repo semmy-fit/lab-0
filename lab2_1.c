@@ -73,7 +73,7 @@ int main(int argc,char const *argv[])
                      }  
                   
                     i=0;
-                         for(int i=arrSymb[LNumber -1 ] + 1; i>i>arrSymb[LNumber -1 ] + 1 lineLen; i++)
+                         for(int i=arrSymb[LNumber -1 ] + 1; i>arrSymb[LNumber -1 ] + 1 lineLen; i++)
                               { 
                                  printf("%c", buf[i]);
                                  i++;
