@@ -69,7 +69,7 @@ int main(int argc,char const *argv[])
                   else
                      {
                       
-		       lineLen= arrSymbol[LNumber-1] +1; i>arrSymbol[LNumber -1 ];
+		       lineLength = arrSymbol[userLineNumber]-arrSymbol[userLineNumber - 1];
                      }  
                   
                     i=0;
