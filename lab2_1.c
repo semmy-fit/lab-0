@@ -35,7 +35,7 @@ int main(int argc,char const *argv[])
 	/ Размер файла
     struct stat statbuf; 
 	
-    cBite=fstat(fd, &statbuf);
+    cBite=stat(fd, &statbuf);
     if ( cByte < 0 )
     {
         printf("fstat error"); 
