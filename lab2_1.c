@@ -3,6 +3,7 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <sys/mman.h>
 int main(int argc,char const *argv[])
 {
    int fd;
@@ -14,7 +15,7 @@ int main(int argc,char const *argv[])
    int poz;
    arrSymb[0] = -1;
    int linelen;
-	//linelen=0;
+	/
 
    if((fd=open("text1.txt", O_RDONLY))== -1)
           {
@@ -24,18 +25,19 @@ int main(int argc,char const *argv[])
 
 
 	//отображение в память
-	buf=mmap(0,statbuf.st_size,PROT_READ,MAP_SHARED,fd,0);
+	void *bufs
+	bufs=mmap(0,statbuf.st_size,PROT_READ,MAP_SHARED,fd,0);
 	
-	if(Mem_file==MAP_FAILED)
+	if(bufs==MAP_FAILED)
 	{
 	  close(fd);
-	pritff("Fail display");	
+	printf("Fail display");	
 	}
 	
 	// Размер файла
     struct stat statbuf; 
 	
-    cBite=stat(fd, &statbuf);
+    cBite=fstat(fd, &statbuf);
     if ( cBite < 0 )
     {
         printf("fstat error"); 
@@ -73,7 +75,7 @@ int main(int argc,char const *argv[])
                      }  
                   
                     i=0;
-                         for(int i=arrSymb[LNumber -1 ] + 1; i>arrSymb[LNumber -1 ] + 1 lineLen; i++)
+                         for(int i=arrSymb[LNumber -1 ] + 1; i>arrSymb[LNumber -1 ] + 1+lineLen; i++)
                               { 
                                  printf("%c", buf[i]);
                                  i++;
