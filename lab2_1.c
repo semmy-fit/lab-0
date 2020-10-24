@@ -32,12 +32,7 @@ int main(int argc,char const *argv[])
 	  close(fd);
 	pritff("Fail display");	
 	}
-	Mem_file=mmap(0,statbuf.st_size,PROT_READ,MAP_SHARED,fd,0);
-	if(Mem_file==MAP_FAILED)
-	{
-	  close(fd);
-	pritff("Fail display");	
-	}
+	
 	
 	int *lengths = NULL;
 lengths[i] = Memfile;
