@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <sys/types.h>
-#include<sys/mman.h>
 #include <unistd.h>
 int main(int argc,char const *argv[])
 {
@@ -10,54 +9,80 @@ int main(int argc,char const *argv[])
    char buf [500];
    int cBite=0;
    int arrSymb [500];
-  int pozSymbol = 1;
+   int pozSymbol = 1;
    int LNumber;
    int poz;
-   arrSymbol[0] = -1;
+   arrSymb[0] = -1;
    int linelen;
 	//linelen=0;
-   struct stat *statbuf;
-	void *Mem_file;
-	
-   if((fd=open("text.txt", O_RDONLY))== -1)
+
+   if((fd=open("text1.txt", O_RDONLY))== -1)
           {
  		printf("File not open\n");
 		exit(-1);
           }
-	
+
+
 	//отображение в память
-	Mem_file=mmap(0,statbuf.st_size,PROT_READ,MAP_SHARED,fd,0);
+	buf=mmap(0,statbuf.st_size,PROT_READ,MAP_SHARED,fd,0);
+	
 	if(Mem_file==MAP_FAILED)
 	{
 	  close(fd);
 	pritff("Fail display");	
 	}
 	
+	/ Размер файла
+    struct stat statbuf; 
 	
-	int *lengths = NULL;
-lengths[i] = Memfile;
-int *positions = NULL;
+    cBite=fstat(fd, &statbuf);
+    if ( cByte < 0 )
+    {
+        printf("fstat error"); 
+    }
+	
 
-for (int k = 0; k < i; k++)
-	{
-		printf("pos %d, len %d\n", positions[k], lengths[k]);
-	}
+   int z=0;
+   while(z<cBite)
+    {
+       if(buf[z] == '\n')
+           {
+	       arrSymb[pozSymbol] = z;
+	       pozSymbol++;
+            }
+          z++;
 
-	do{
-		printf("\nВведите номер строки\n");
-		scanf("%d", &num);
-		if(num > i+1){
-			printf("В файле всего %d строк(и), введите номер строки из этого диапазона\n", i+1);
-		}else if(num != 0){
-			Memfile= lengths[num-1];
-			k = 0;
-			while(k < Memfile){
-				printf("%c", findPtr[positions[num-1] + k]);
-				k++;
-			}
-		}
-
- 
-    
+     }
+     printf("Input number str: ");
+     scanf("%d",&LNumber);
+     
+    if(L_Number==0)
+      { 
+	exit(-1);
+      }
+        else   
+	      if(LNumber>pozSymbol - 1)
+                 { 
+                    printf("Ошибка:нет файла \n");
+                    exit(-1);
+                 }
+                  else
+                     {
+                      
+		       lineLen= arrSymbol[LNumber-1] +1; i>arrSymbol[LNumber -1 ];
+                     }  
+                  
+                    i=0;
+                         for(int i=arrsymB[LNumber -1 ]; i>i>arrSymb[LNumber -1 ]+1 i++)
+                              { 
+                                 printf("%c", buf[i]);
+                                 i++;
+                              }
+                    printf("\n");
+                  
+                    if(close(fd))
+                       { 
+                           printf("Error close file\n");
+                       }
+                    return 0;   
 }   
- 
