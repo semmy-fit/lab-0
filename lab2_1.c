@@ -32,7 +32,7 @@ int main(int argc,char const *argv[])
 	pritff("Fail display");	
 	}
 	
-	/ Размер файла
+	// Размер файла
     struct stat statbuf; 
 	
     cBite=stat(fd, &statbuf);
