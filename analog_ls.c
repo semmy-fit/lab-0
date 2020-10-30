@@ -1,4 +1,4 @@
-//~ простенький аналог ls в UNIX
+
  
 #include <stdio.h>
 #include <dirent.h>
