@@ -2,6 +2,7 @@
 #include <dirent.h>
 #include <string.h>
 #include <pwd.h>
+#include <sys/stat.h>
 #include <sys/types.h>
 #include <grp.h>
 //~ #define NAME_MAX 256
@@ -43,26 +44,52 @@ else
     return 0;
 }
 
-    typeOf( name ) char *name;
-    {  int type; struct stat st;
+ int typeOf(char *name)
+    {  
+       int type; 
+       struct stat st;
        if( stat( name, &st ) < 0 ){
                printf( "%s не существует\n", name );
                return 0;
        }
        printf("Файл имеет %d имен\n", st.st_nlink);
+       struct tm *timeinfo=localtime(&st.st_mtime)
+       int ttime;
 
-       switch(type = (st.st_mode & S_IFMT)){
-       case S_IFREG:
-            printf( "Обычный файл размером %ld байт\n",
-                       st.st_size ); break;
-       case S_IFDIR:
-               printf( "Каталог\n" );      break;
-       case S_IFCHR:   /* байтоориентированное  */
-       case S_IFBLK:   /* блочноориентированное */
-               printf( "Устройство\n" );   break;
-       case S_IFIFO:
-               printf( "FIFO-файл\n" );    break;
-       default:
-               printf( "Другой тип\n" );   break;
-       }       return type;
-     }
+       // Считываем текущее время
+        ctime = ttime (NULL);
+
+        // С помощью функции ctime преобразуем считанное время в
+        // локальное, а затем в строку и выводим в консоль.
+        printf ("Время: %s\n",ctime (&ctime) );
+         
+       //type=(st.st_mode & S_IFMT);
+  
+       if(st.st_mode & S_IFREG)  { printf( "Обычный файл размером %ld байт\n", st.st_size );}                
+       if( st.st_mode & S_IFDIR  { printf( "Каталог\n",st.st_size );}   
+       if(st.st_mode & S_IFCHR) { printf("",st.st_size ); }
+       if(st.st_mode & S_IFBLK)  { printf( "Устройство\n",st.st_size); } 
+       if (st.st_mode  & S_IFIFO { printf( "FIFO-файл\n",st.st_size ); }
+               
+           if (st.st_mode & S_IROTH)
+                {  
+                   strcat(Other,"r");
+                }
+                 else 
+                    { strcat(Other,"Обычный файл"); }   
+      
+           if(st.st_mode &   S_IWOTH  )                
+               {
+                 strcat(Other,"w");
+               }
+               else 
+                  { strcat(Other,"Обычный файл"); }
+           
+          if(st.st_mode & S_IXOTH)
+              {
+                strcat(Other,"x"); 
+              } 
+               else
+                 { strcat(Other,"Обычный файл"); }        
+     
+  }
