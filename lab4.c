@@ -5,8 +5,9 @@
 #include <stdio.h>
 #include <syslog.h>
 #include <stdlib.h>
+#include <semaphore.h>
 #define DEBUG
-
+#define SEM_FAILED ((sem_t *)(-1))
 int main(void){
 pid_t p;
 int fd;
@@ -15,7 +16,8 @@ int result;
 int a;
 int b;
 printf("Original program, pid=%d\n", getpid());
-p=fork();
+p=fork(); 
+    sem_t *sem_open(const char *name, O_CREAT,);
 if(p==0) {
     printf("In child process, pid=%d, ppid=%d\n", getpid(), getppid());
     a=10;
@@ -87,6 +89,6 @@ if(p==0) {
     openlog("test_stderr",LOG_PERROR | LOG_PID,LOG_USER);
     syslog(LOG_INFO,"this is attempt to use stderr for syslog");
     closelog();
- 
+ int sem_close(sem_t *sem);
 
 }
