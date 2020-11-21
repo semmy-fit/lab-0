@@ -14,11 +14,11 @@ int main(){
   sem_t *sem_n;
   sem_t *sem1_n;  
   int ret,val;
-  if ((sem_n = sem_open(SEM_NAME, O_CREAT, 0600, 1)) ==SEM_FAILED){
+  if ((sem_n = sem_open(SEM_NAME, O_CREAT, 0777, 1)) ==SEM_FAILED){
      perror("sem_open");
       return -1;
       }
-  if ((sem1_n = sem_open(SEM_NAM1, O_CREAT, 0600,1)) == SEM_FAILED){
+  if ((sem1_n = sem_open(SEM_NAM1, O_CREAT, 0777,0)) == SEM_FAILED){
       perror("sem_open");
       return -1;
   }
@@ -73,22 +73,6 @@ p=fork();
          sem_post(sem_n);
 
       }
-
-  if ((ret = sem_trywait(sem_n)) != 0 ||(ret = sem_trywait(sem1_n)) != 0  && errno == EAGAIN)
-
-      {  
-
-        sem_wait(sem_n);
-        sem_wait(sem1_n);
-      }
-  
-       else if (ret != 0)
-         {
-           perror("sem_trywait");
-           return -1;
-         }
-
- if (sem_post(sem_n) != 0 || sem_post(sem1_n) !=0)   perror("post error");
 
  sem_close(sem_n);
  sem_close(sem1_n);
