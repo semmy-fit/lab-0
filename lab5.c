@@ -49,7 +49,7 @@ int     fd[2], nbytes;
 
                    /* Чтение строки из канала */
                    nbytes = read(fd[0], readbuffer, sizeof(readbuffer));
-                     close(fd[1]);
+                     close(fd[0]);
                      printf("toupper: ");
                    printf("\nReceived string: %s", readbuffer);
                    for(int i=0;i<sizeof(readbuffer);i++)
