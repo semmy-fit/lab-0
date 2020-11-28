@@ -26,9 +26,7 @@ int     fd[2], nbytes;
 
            if(childpid == 0)
 
-           {       
-                      
-                      
+           {  
                    /* Потомок закрывает вход */
                    close(fd[0]);
                    printf("write string %s",string);
@@ -40,24 +38,20 @@ int     fd[2], nbytes;
            }
            else
            {
-                
-               
-                    
                    /* Родитель закрывает выход */
                 
                    close(fd[1]);
 
                    /* Чтение строки из канала */
                    nbytes = read(fd[0], readbuffer, sizeof(readbuffer));
-                     close(fd[0]);
-                     printf("toupper: ");
+                     close(fd[0]);  
                    printf("\nReceived string: %s", readbuffer);
+                       printf("toupper: ");
                    for(int i=0;i<sizeof(readbuffer);i++)
                    {
                            printf("%c",toupper(readbuffer[i]));
                            
                    }
-                       printf("\nReceived string: %s", readbuffer);
                   
            }
 }
